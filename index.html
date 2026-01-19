@@ -3,73 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel= "icon" type= "image/jpg" href= "images/ChatGPT Image Jan 15, 2026, 02_04_25 PM.png">
+    <link rel="stylesheet" href="style.css">
     <title>ELIXIR</title>
-
 </head>
 <body>
-<h1>Home</h1>
-<p>Welcome to this page (Home)</p>
-<a href="https://www.google.com/imghp" target="_blank">
-    <img src="images/image1.jpg" alt="Small image" width="150" height="150">
-</a>
-<!-- Links to all 5 pages. -->
-<nav>
-    <a href="index.html">Home</a> |
-    <a href="checkout.html">Products</a> |
-    <a href="product.html">Product</a> |
-    <a href="about.html">About</a> |
-    <a href="contact.html">Contact</a>
-</nav>
 
-    <!--
-<style>
+<header>
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="checkout.html">Products</a> |
+        <a href="product.html">Product</a> |
+        <a href="about.html">About</a> |
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+<aside class="joke-sidebar">
+    <h3>Daily Joke</h3>
+    <p id="joke">Loading...</p>
+    <button onclick="loadJoke()">New joke</button>
+</aside>
 
-    #joke {
-        background-color: #f5f5f5;
-        border-left: 4px solid #4caf50;
-        padding: 1rem;
-        margin-top: 1.5rem;
-        max-width: 400px;
-        font-style: italic;
-    }
 
-    button {
-        margin-top: 0.75rem;
-        padding: 0.5rem 1rem;
-        cursor: pointer;
-    }
+<main>
+    <a> 
+    <img 
+        src="images/ChatGPT Image Jan 15, 2026, 02_38_48 PM.png" 
+        alt="Elixir Logo"
+        width="250"
+        height="175"
+        style="display:block; margin: 0 auto;">
 
-</style>
--->
+        <p>
+            The perfect water bottle for everyday use.<br>
+            Durable, stylish, and designed to keep you hydrated.
+        </p>
 
-<button onclick="loadJoke()">Get a new joke</button>
+        <img src="images/ChatGPT Image Jan 15, 2026, 02_05_59 PM.png" alt="Elixir Water Bottle" width="450">
 
-<p id="joke"></p>
+        <p>
+            <a href="product.html" class="cta-button">View product details</a>
+        </p>
+</main>
+
 <script>
   // Hämta paragrafen där skämtet ska visas
   const jokeElement = document.getElementById("joke");
 
   // Funktion som hämtar ett nytt skämt
   function loadJoke() {
-    // Visa laddningstext medan vi väntar
     jokeElement.textContent = "Laddar skämt...";
-
-    // Anropa API:et för att få ett slumpmässigt skämt
     fetch("https://official-joke-api.appspot.com/random_joke")
-      .then(function (response) {
-        // Gör om svaret till JSON
-        return response.json();
+      .then(response => response.json())
+      .then(joke => {
+        jokeElement.textContent = joke.setup + " — " + joke.punchline;
       })
-      .then(function (joke) {
-        // Visa skämtet på sidan
-        jokeElement.textContent =
-          joke.setup + " — " + joke.punchline;
-      })
-      .catch(function () {
-        // Om något går fel, visa ett felmeddelande
-        jokeElement.textContent =
-          "Kunde inte ladda skämt 😢";
+      .catch(() => {
+        jokeElement.textContent = "Kunde inte ladda skämt 😢";
       });
   }
 
@@ -77,7 +66,5 @@
   loadJoke();
 </script>
 
-    
 </body>
 </html>
-
