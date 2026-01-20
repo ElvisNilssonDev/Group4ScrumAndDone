@@ -76,3 +76,56 @@ main {
     width: 250px;
     height: auto;
 }
+.reviews {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.reviews-columns {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.reviews-column {
+    width: 100%;
+    max-width: 400px;
+}
+
+.reviews-column h3 {
+    margin-bottom: 20px;
+}
+
+/* Review cards */
+.review {
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.review p {
+    font-style: italic;
+    margin: 10px 0;
+}
+
+.review span {
+    font-size: 13px;
+    color: #555;
+}
+
+/* Trustpilot look */
+.trustpilot {
+    border-left: 4px solid #00b67a;
+    background-color: #f6fdfa;
+}
+
+/* Google look */
+.google {
+    border-left: 4px solid #4285f4;
+    background-color: #f5f8ff;
+}
+
