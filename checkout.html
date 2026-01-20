@@ -1,25 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel= "icon" type= "image/jpg" href= "images/ChatGPT Image Jan 15, 2026, 02_04_25 PM.png">
-    <title>ELIXIR/Checkout</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/jpg" href="images/ChatGPT Image Jan 15, 2026, 02_04_25 PM.png">
+  <title>ELIXIR / Checkout</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-<h1>Products</h1>
-<p>Welcome to this page (Products)</p>
-<a href="https://www.google.com/imghp" target="_blank">
-    <img src="images/image2.jpg" alt="Small image" width="150" height="150">
-</a>
-<!-- Links to all 5 pages. -->
-<nav>
-    <a href="index.html">Home</a> |
-    <a href="checkout.html">Products</a> |
-    <a href="product.html">Product</a> |
-    <a href="about.html">About</a> |
-    <a href="contact.html">Contact</a>
-</nav>
+  <nav class="nav">
+    <div class="nav__brand">ELIXIR</div>
+    <div class="nav__links">
+      <a href="index.html">Home</a>
+      <a href="checkout.html" aria-current="page">Checkout</a>
+      <a href="product.html">Product</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <header class="hero">
+      <div>
+        <p class="kicker">Secure Checkout</p>
+        <h1 class="title">Finish your purchase</h1>
+        <p class="subtitle">A premium experience for a premium bottle.</p>
+      </div>
+      <div class="trust">
+        <div class="pill">✓ Encrypted</div>
+        <div class="pill">✓ Fast delivery</div>
+        <div class="pill">✓ 30-day returns</div>
+      </div>
+    </header>
+
+    <section class="grid">
+      <!-- LEFT: Payment -->
+      <section class="card card--glass" id="checkout">
+        <div class="card__head">
+          <h2>Payment details</h2>
+          <p>Demo checkout (no real payment processing).</p>
+        </div>
+
+        <form class="form" onsubmit="event.preventDefault(); completePurchase();">
+          <div class="field">
+            <label for="name">Full name</label>
+            <input id="name" type="text" placeholder="Yule Andersson" autocomplete="name" required />
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="card">Card number</label>
+              <input id="card" type="text" inputmode="numeric" placeholder="1234 5678 9012 3456" required />
+            </div>
+          </div>
+
+          <div class="row row--3">
+            <div class="field">
+              <label for="exp">MM / YY</label>
+              <input id="exp" type="text" placeholder="08/29" required />
+            </div>
+            <div class="field">
+              <label for="cvc">CVC</label>
+              <input id="cvc" type="text" inputmode="numeric" placeholder="123" required />
+            </div>
+            <div class="field">
+              <label for="zip">ZIP</label>
+              <input id="zip" type="text" inputmode="numeric" placeholder="12345" required />
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="row row--2">
+            <div class="field">
+              <label for="address">Address</label>
+              <input id="address" type="text" placeholder="Street, number" autocomplete="street-address" required />
+            </div>
+            <div class="field">
+              <label for="city">City</label>
+              <input id="city" type="text" placeholder="Stockholm" autocomplete="address-level2" required />
+            </div>
+          </div>
+
+          <button class="btn" type="submit">
+            <span>Pay</span>
+            <span class="btn__meta" id="payTotal">—</span>
+          </button>
+
+          <p class="fineprint">
+            By clicking Pay, you agree to the ELIXIR terms. This is a front-end demo only.
+          </p>
+        </form>
+      </section>
+
+      <!-- RIGHT: Basket / Summary -->
+      <aside class="card card--solid">
+        <div class="card__head">
+          <h2>Your basket</h2>
+          <p>One step away from hydration supremacy.</p>
+        </div>
+
+        <div class="product">
+          <!-- Put your bottle image in /images and change src below -->
+          <img
+            class="product__img"
+            src="images/ChatGPT Image Jan 15, 2026, 02_04_25 PM.png"
+            alt="ELIXIR bottle"
+            onerror="this.src='images/placeholder-bottle.png'"
+          />
+
+          <div class="product__info">
+            <div class="product__name">ELIXIR — Obsidian Edition</div>
+            <div class="product__desc">Vacuum-sealed. Hand-finished. Unreasonably iconic.</div>
+
+            <div class="qty">
+              <button class="qty__btn" type="button" onclick="changeQty(-1)">−</button>
+              <span class="qty__num" id="qtyNum">1</span>
+              <button class="qty__btn" type="button" onclick="changeQty(1)">+</button>
+            </div>
+          </div>
+
+          <div class="product__price" id="itemPrice">€1999,99</div>
+        </div>
+
+        <div class="summary">
+          <div class="summary__row">
+            <span>Subtotal</span>
+            <span id="subtotal">€1999,99</span>
+          </div>
+          <div class="summary__row">
+            <span>Shipping</span>
+            <span id="shipping">€300</span>
+          </div>
+          <div class="summary__row">
+            <span>Tax</span>
+            <span id="tax">€200</span>
+          </div>
+          <div class="divider"></div>
+          <div class="summary__row summary__row--total">
+            <span>Total</span>
+            <span id="total">2499,99€</span>
+          </div>
+
+          <div class="promo">
+            <input id="promo" type="text" placeholder="Promo code (optional)" />
+            <button class="btn btn--ghost" type="button" onclick="applyPromo()">Apply</button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- SUCCESS -->
+      <section class="card card--glass hidden" id="success">
+        <div class="success">
+          <div class="success__icon">✓</div>
+          <h2>Purchase successful</h2>
+          <p>Your ELIXIR bottle is secured. Confirmation sent to your email.</p>
+
+          <div class="success__details">
+            <div>
+              <div class="label">Order</div>
+              <div class="value" id="orderId">ELX-000000</div>
+            </div>
+            <div>
+              <div class="label">Total paid</div>
+              <div class="value" id="paidTotal">—</div>
+            </div>
+          </div>
+
+          <a class="btn" href="index.html">Back to home</a>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
+
 
