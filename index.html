@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <title>ELIXIR</title>
 </head>
+
 <body>
 
 <header>
@@ -132,6 +133,48 @@
 
   // Ladda ett skämt automatiskt när sidan öppnas
   loadJoke();
+</script>
+<section class="payment-section">
+    <p>Secure payments with:</p>
+    <div class="payment-logos">
+        <img src="images/swish.png" alt="Swish">
+        <img src="images/visa.png" alt="Visa">
+        <img src="images/klarna.jpg" alt="Klarna">
+        <img src="images/paypal.webp" alt="PayPal">
+    </div>
+</section>
+
+<!-- Subscription popup -->
+<div id="subscribe-popup" class="subscribe-popup">
+  <div class="subscribe-content">
+    <span id="close-popup" class="close">&times;</span>
+    <h3>Get 10% off!</h3>
+    <p>Subscribe to our newsletter and get a discount on your next order.</p>
+    <input type="email" id="subscribe-email" placeholder="Your email">
+    <button id="subscribe-button">Subscribe</button>
+  </div>
+</div>
+<script>
+  // Visa popup när sidan laddas
+  window.addEventListener('load', () => {
+    document.getElementById('subscribe-popup').style.display = 'flex';
+  });
+
+  // Stäng popup när man klickar på X
+  document.getElementById('close-popup').addEventListener('click', () => {
+    document.getElementById('subscribe-popup').style.display = 'none';
+  });
+
+  // Subscription button (bara demo, kan logga email i console)
+  document.getElementById('subscribe-button').addEventListener('click', () => {
+    const email = document.getElementById('subscribe-email').value;
+    if(email) {
+      alert(`Thanks for subscribing with: ${email}`);
+      document.getElementById('subscribe-popup').style.display = 'none';
+    } else {
+      alert('Please enter your email!');
+    }
+  });
 </script>
 
 </body>
