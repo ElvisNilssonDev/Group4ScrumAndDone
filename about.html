@@ -7,6 +7,8 @@
     <title>ELIXIR/About</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<meta charset="UTF-8">
+    <title>Sound Button</title>
 <body>
 
 <center>
@@ -55,6 +57,31 @@
 
     <h2>Contact</h2>
     <p>Email: <strong>support@elixir.com</strong></p>
+
+<p>Should it be that you have in anyway done anything to woid our return policy, please click the button:</p>
+
+<audio id="vaderSound">
+    <source src="sounds/darth-vader-nooooooooo.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+
+<img 
+    src="images/button.png" 
+    alt="Play sound" 
+    width="200"
+    style="cursor: pointer;"
+    onclick="playSound()"
+>
+
+<script>
+    function playSound() {
+        const sound = document.getElementById("vaderSound");
+        sound.currentTime = 0;
+        sound.play();
+    }
+</script>
+
 </section>
 
     <nav>
