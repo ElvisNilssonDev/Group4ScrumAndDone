@@ -3,22 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <title>ELIXIR</title>
 </head>
+
 <body>
-<h1>Home</h1>
-<p>Welcome to this page (Home)</p>
-<a href="https://www.google.com/imghp" target="_blank">
-    <img src="images/image1.jpg" alt="Small image" width="150" height="150">
+
+<header>
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="checkout.html">Checkout</a> |
+        <a href="product.html">Product</a> |
+        <a href="about.html">About</a> |
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+<aside class="joke-sidebar">
+    <h3>Daily Joke</h3>
+    <p id="joke">Loading...</p>
+    <button onclick="loadJoke()">New joke</button>
+</aside>
+
+
+<main>
+
+    <img 
+        src="images/ChatGPT Image Jan 15, 2026, 02_38_48 PM.png" 
+        alt="Elixir Logo"
+        width="250"
+        height="175"
+        style="display:block; margin: 0 auto;">
+
+        <p>
+            The perfect water bottle for everyday use.<br>
+            Durable, stylish, and designed to keep you hydrated.
+        </p>
+     <a href="https://www.google.com/search?tbm=isch&q=water+bottle" target="_blank">
+  <img src="images/ChatGPT Image Jan 15, 2026, 02_05_59 PM.png" 
+       alt="Elixir Water Bottle" 
+       width="450" 
+       style="cursor: pointer;">
 </a>
-<!-- Links to all 5 pages. -->
-<nav>
-    <a href="index.html">Home</a> |
-    <a href="checkout.html">Products</a> |
-    <a href="product.html">Product</a> |
-    <a href="about.html">About</a> |
-    <a href="contact.html">Contact</a>
-</nav>
+
+<p style="text-align:center; font-size: 0.9rem; color: #555;">
+  Click the image to view it in Google Images
+</p>
+
+
+        <p>
+            <a href="product.html" class="cta-button">View product details</a>
+        </p>
+<section class="reviews">
+    <h2>What our customers say</h2>
+
+    <div class="reviews-columns">
+
+        <!-- Trustpilot column -->
+        <div class="reviews-column">
+            <h3>★★★★★ Trustpilot</h3>
+
+            <div class="review trustpilot">
+                <p>“Amazing quality bottle! Keeps my water cold all day.”</p>
+                <span>– Anna S.</span>
+            </div>
+
+            <div class="review trustpilot">
+                <p>“Perfect for work and the gym. Highly recommend!”</p>
+                <span>– Johan K.</span>
+            </div>
+
+            <div class="review trustpilot">
+                <p>“Stylish design and very durable.”</p>
+                <span>– Sofia M.</span>
+            </div>
+
+            <div class="review trustpilot">
+                <p>“Best bottle I’ve owned. Worth every penny.”</p>
+                <span>– Erik P.</span>
+            </div>
+
+            <div class="review trustpilot">
+                <p>“Fast delivery and great customer service.”</p>
+                <span>– Lina R.</span>
+            </div>
+        </div>
+
+        <!-- Google column -->
+        <div class="reviews-column">
+            <h3>★★★★★ Google Reviews</h3>
+
+            <div class="review google">
+                <p>“Very happy with my purchase. Looks premium.”</p>
+                <span>– Marcus L.</span>
+            </div>
+
+            <div class="review google">
+                <p>“Keeps drinks cold for hours. Love it.”</p>
+                <span>– Daniel W.</span>
+            </div>
+
+            <div class="review google">
+                <p>“Simple, clean design and great quality.”</p>
+                <span>– Emma T.</span>
+            </div>
+
+            <div class="review google">
+                <p>“Bought one for myself and one as a gift.”</p>
+                <span>– Oliver N.</span>
+            </div>
+
+            <div class="review google">
+                <p>“Exactly what I was looking for.”</p>
+                <span>– Sara B.</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</main>
+
+<script>
+  // Hämta paragrafen där skämtet ska visas
+  const jokeElement = document.getElementById("joke");
+
+  // Funktion som hämtar ett nytt skämt
+  function loadJoke() {
+    jokeElement.textContent = "Laddar skämt...";
+    fetch("https://official-joke-api.appspot.com/random_joke")
+      .then(response => response.json())
+      .then(joke => {
+        jokeElement.textContent = joke.setup + " — " + joke.punchline;
+      })
+      .catch(() => {
+        jokeElement.textContent = "Kunde inte ladda skämt 😢";
+      });
+  }
+
+  // Ladda ett skämt automatiskt när sidan öppnas
+  loadJoke();
+</script>
+<section class="payment-section">
+    <p>Secure payments with:</p>
+    <div class="payment-logos">
+        <img src="images/swish.png" alt="Swish">
+        <img src="images/visa.png" alt="Visa">
+        <img src="images/klarna.jpg" alt="Klarna">
+        <img src="images/paypal.webp" alt="PayPal">
+    </div>
+</section>
+
+<!-- Subscription popup -->
+<div id="subscribe-popup" class="subscribe-popup">
+  <div class="subscribe-content">
+    <span id="close-popup" class="close">&times;</span>
+    <h3>Get 10% off!</h3>
+    <p>Subscribe to our newsletter and get a discount on your next order.</p>
+    <input type="email" id="subscribe-email" placeholder="Your email">
+    <button id="subscribe-button">Subscribe</button>
+  </div>
+</div>
+<script>
+  // Visa popup när sidan laddas
+  window.addEventListener('load', () => {
+    document.getElementById('subscribe-popup').style.display = 'flex';
+  });
+
+  // Stäng popup när man klickar på X
+  document.getElementById('close-popup').addEventListener('click', () => {
+    document.getElementById('subscribe-popup').style.display = 'none';
+  });
+
+  // Subscription button (bara demo, kan logga email i console)
+  document.getElementById('subscribe-button').addEventListener('click', () => {
+    const email = document.getElementById('subscribe-email').value;
+    if(email) {
+      alert(`Thanks for subscribing with: ${email}`);
+      document.getElementById('subscribe-popup').style.display = 'none';
+    } else {
+      alert('Please enter your email!');
+    }
+  });
+</script>
+
 </body>
 </html>
-

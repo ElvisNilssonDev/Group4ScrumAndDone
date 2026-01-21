@@ -3,22 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
+    <link rel= "icon" type= "image/jpg" href= "images/ChatGPT Image Jan 15, 2026, 02_04_25 PM.png">
+    <title>ELIXIR/About</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+<meta charset="UTF-8">
+    <title>Sound Button</title>
 <body>
-<h1>About</h1>
-<p>Welcome to this page (About)</p>
-<a href="https://www.google.com/imghp" target="_blank">
-    <img src="images/image4.jpg" alt="Small image" width="150" height="150">
-</a>
-<!-- Links to all 5 pages. -->
-<nav>
-    <a href="index.html">Home</a> |
-    <a href="checkout.html">Products</a> |
-    <a href="product.html">Product</a> |
-    <a href="about.html">About</a> |
-    <a href="contact.html">Contact</a>
-</nav>
+
+<center>
+
+    <p><b>We are "Not a Scam" LLC.</b></p>
+
+    <a href="https://www.google.com/imghp" target="_blank">
+        <img src="images/Rjukan.jpg" alt="Small image" width="500" height="500">
+    </a>
+
+    <p><b>
+        Hello and welcome to "Not a Scam" LLC. We have existed since 2026.
+        And we sell this all exclusive D2O.
+    </b></p>
+
+    <p><b>
+        Water better than normal water, like holy water but better.
+        Can you use holy water in a nuclear reactor? No!
+        But without our new formula you can.
+        Made at our historical sites in Telemark, Norway!
+    </b></p>
+
+    <section class="policy">
+    <h1>Return Policy</h1>
+
+    <p><strong>Brand: Elixir</strong> </p>
+    <p><strong>Effective from:</strong> 2026-01-01</p>
+
+    <h2>Returns & Refunds</h2>
+    <ul>
+        <li>Opened or used water products cannot be returned.</li>
+        <li>Returns are accepted only in the following cases:</li>
+        <ul>
+            <li>Damage during delivery</li>
+            <li>Incorrect product received</li>
+            <li>Manufacturing or sealing defects</li>
+        </ul>
+    </ul>
+
+    <h2>Return Conditions</h2>
+    <ul>
+        <li>The product must be unopened and unused</li>
+        <li>Return requests must be made within 2 days of purchase</li>
+        <li>Proof of purchase is required</li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p>Email: <strong>support@elixir.com</strong></p>
+
+<p>Should it be that you have in anyway done anything to woid our return policy, please click the button:</p>
+
+<audio id="vaderSound">
+    <source src="sounds/darth-vader-nooooooooo.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+
+<img 
+    src="images/button.png" 
+    alt="Play sound" 
+    width="200"
+    style="cursor: pointer;"
+    onclick="playSound()"
+>
+
+<script>
+    function playSound() {
+        const sound = document.getElementById("vaderSound");
+        sound.currentTime = 0;
+        sound.play();
+    }
+</script>
+
+</section>
+
+    <nav>
+        <p><b>
+            <a href="index.html">Home</a> |
+            <a href="checkout.html">Checkout</a> |
+            <a href="product.html">Product</a> |
+            <a href="about.html">About</a> |
+            <a href="contact.html">Contact</a>
+        </b></p>
+    </nav>
+
+</center>
+
 </body>
 </html>
 
